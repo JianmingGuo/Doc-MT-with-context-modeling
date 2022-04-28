@@ -1,0 +1,38 @@
+src_vocab: '/home/ming/code/ijcnn/aspec/subword/vocab.32k.ja.txt'
+dst_vocab: '/home/ming/code/ijcnn/aspec/subword/vocab.32k.zh.txt'
+src_vocab_size: 31950
+dst_vocab_size: 31968
+hidden_units: 512
+scale_embedding: True
+attention_dropout_rate: 0.0
+residual_dropout_rate: 0.1
+num_blocks: 2
+num_heads: 8
+binding_embedding: False
+train:
+    devices: '0'
+    src_path: '/home/ming/code/ijcnn/aspec/raw1/train.ja'
+    dst_path: '/home/ming/code/ijcnn/aspec/raw1/train.zh'
+    tokens_per_batch:  2500
+    max_length: 50
+    num_epochs: 60
+    logdir: 'aspec/model_generator_jazh'
+    save_freq: 500
+    summary_freq: 100
+    grads_clip: 5
+    optimizer: 'adam_decay'
+    learning_rate: 0.0001
+    learning_rate_warmup_steps: 4000
+    shared_embedding: False
+    label_smoothing: 0.1
+    batch_size: 16
+test:
+    src_path: '/home/ming/code/ijcnn/aspec/raw1/valid.ja'
+    dst_path: '/home/ming/code/ijcnn/aspec/raw1/valid.tc.norm.tok.zh'
+    ori_dst_path: 'aspec/dev/dev.zh'
+    output_path: 'aspec/dev/dev.output'
+    batch_size: 1
+    max_target_length: 200
+    beam_size: 4
+    lp_alpha: 0.6
+    devices: '0,1'

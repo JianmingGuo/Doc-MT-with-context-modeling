@@ -1,0 +1,38 @@
+src_vocab: 'vocabs/EURO/vocab.en.30000'
+dst_vocab: 'vocabs/EURO/vocab.de.30000'
+src_vocab_size: 16525
+dst_vocab_size: 25439
+hidden_units: 512
+scale_embedding: True
+attention_dropout_rate: 0.0
+residual_dropout_rate: 0.1
+num_blocks: 1
+num_heads: 8
+binding_embedding: False
+train:
+    devices: ''
+    src_path: 'EN-DE-Europarl7/train/all.en.tok.30000'
+    dst_path: 'EN-DE-Europarl7/train/all.de.tok.30000'
+    tokens_per_batch:  2500
+    max_length: 50
+    num_epochs: 60
+    logdir: 'pretrain/model_generator_fren'
+    save_freq: 200
+    summary_freq: 100
+    grads_clip: 5
+    optimizer: 'adam_decay'
+    learning_rate: 0.0001
+    learning_rate_warmup_steps: 4000
+    shared_embedding: False
+    label_smoothing: 0.1
+    batch_size: 64
+test:
+    src_path: './EN-DE-Europarl7/dev/dev.en'
+    dst_path: './EN-DE-Europarl7/dev/dev.de'
+    ori_dst_path: './EN-DE-Europarl7/dev/dev.de'
+    output_path: 'EN-DE-Europarl7/dev/dev.output'
+    batch_size: 1
+    max_target_length: 200
+    beam_size: 4
+    lp_alpha: 0.6
+    devices: '2'

@@ -1,0 +1,38 @@
+src_vocab: 'vocabs/EURO/vocab.en.30000'
+dst_vocab: 'vocabs/EURO/vocab.de.30000'
+src_vocab_size: 16525
+dst_vocab_size: 25439
+hidden_units: 512
+scale_embedding: True
+attention_dropout_rate: 0.0
+residual_dropout_rate: 0.1
+num_blocks: 1
+num_heads: 8
+binding_embedding: False
+train:
+    devices: '0'
+    src_path: 'EN-DE-Europarl7/train_score/concat.en'
+    dst_path: 'EN-DE-Europarl7/train_score/concat.de'
+    tokens_per_batch:  2500
+    max_length: 50
+    num_epochs: 1
+    logdir: 'pretrain/model_generator_fren'
+    save_freq: 400000
+    summary_freq: 400000
+    grads_clip: 5
+    optimizer: 'adam_decay'
+    learning_rate: 0.0001
+    learning_rate_warmup_steps: 0
+    shared_embedding: False
+    label_smoothing: 0.1
+    batch_size: 1
+# test:
+#     src_path: './EN-DE-Europarl7/score/concat.en'
+#     dst_path: './EN-DE-Europarl7/score/concat.de'
+#     ori_dst_path: './EN-DE-Europarl7/score/concat.de'
+#     output_path: './EN-DE-Europarl7/score/dev.output'
+#     batch_size: 1
+#     max_target_length: 200
+#     beam_size: 4
+#     lp_alpha: 0.6
+#     devices: '1'
