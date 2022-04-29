@@ -11,7 +11,7 @@ This implementation is based on the repo [NMT_GAN](https://github.com/ZhenYangIA
 > conda install --yes --file requirements.txt
 
 ## Process the corpus
-To ensure the quality of the input corpus. Tokenization, BPE, clean and shuffle may be necessary. The relate script is in the file corpus/process.sh
+To ensure the quality of the input corpus. Tokenization, BPE, clean and shuffle may be necessary. The relate script is in the file ```corpus/process.sh```
 
 > bash corpus/process.sh
 
@@ -29,7 +29,7 @@ To ensure the comparability of our experimental results, we use the same corpus 
 
 ## Train the Model
 
-The yaml file which defines the parameters can be built according to your needs. Some examples are in configs/
+The yaml file which defines the parameters can be built according to your needs. Some examples are in ```configs/```
 
 > python train_con_ijcnn.py -c YAML_FILE
 
